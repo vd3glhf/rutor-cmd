@@ -1,2 +1,2 @@
 # rutor-cmd
-Downloading torrent files from rutor.org using the command line interface
+Downloading torrent files from rutor.info using the command line interface
