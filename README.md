@@ -2,6 +2,7 @@
 ENG:
 
 Downloading torrent files from rutor.info using the command line interface.
+The main branch uses the Russian interface, if you need to use the English interface, then switch the branch to update-main-py.
 
 How to use it?
 1. Install the Selenium library.
@@ -15,6 +16,7 @@ pip install selenium
 RUS:
 
 Загрузка торрент-файлов с rutor.info с помощью интерфейса командной строки.
+В ветке main используется русский интерфейс, если вам необходимо использовать английский интерфейс, то переключите ветку на update-main-py.
 
 Как это использовать?
 1. Установите библиотеку Selenium.
