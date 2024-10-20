@@ -8,7 +8,7 @@ How to use it?
 
 pip install selenium
 
-2. Go to this resource (https://getwebdriver.com/chromedriver#stable ), download the driver for the latest version of Chrome Browser.
+2. Go to this resource (https://getwebdriver.com/chromedriver#stable), download the driver for the latest version of Chrome Browser.
 3. Next, you need to unpack the downloaded archive to a place convenient for you, and then add it to the PATH variable. To verify the successful installation of the driver, run the command prompt and type "chromedriver --version" (without quotes) if everything is done correctly, you will see the version number
 4. Next, run the file main.py
 
