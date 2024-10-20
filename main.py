@@ -8,17 +8,17 @@ def set_prefs():
     filename = "Path_to_download.txt"
     log = os.path.isfile("Path_to_download.txt")
     if log:
-        title = "Хотите изменить путь к папке загрузок? (y/n)"
+        title = "Do you want to change the path to the downloads folder? (y/n)"
         choice = input(title).strip().lower()
         if choice == "n":
             with open(filename, "r") as f:
                 path_download = f.read().strip()
         else:
-            path_download = input("Введите путь (пример: C:\\***\\***\\***) до места загрузки файлов:\n")
+            path_download = input("Enter the path (example: C:\\***\\***\\***) to the file upload location:\n")
             with open(filename, "w") as f:
                 f.write(path_download)
     else:
-        path_download = input("Введите путь (пример: C:\\***\\***\\***) до места загрузки файлов:\n")
+        path_download = input("Enter the path (example: C:\\***\\***\\***) to the file upload location:\n")
         with open(filename, "w") as f:
             f.write(path_download)
     return path_download
@@ -26,7 +26,7 @@ def set_prefs():
 
 def select_option(options):
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("Выберите нужную ссылку на файл:")
+    print("Select the desired file link:")
     print(options[0])
     print(options[1])
     option_index = 0
@@ -38,16 +38,16 @@ def select_option(options):
 
     while True:
         try:
-            choice = int(input("Введите номер выбранного варианта: ")) - 1 
+            choice = int(input("Enter the number of the selected option: ")) - 1 
             if 0 <= choice < len(options):
                 return choice 
             else:
-                print("Неверный номер, попробуйте снова.")
+                print("Wrong number, try again.")
         except ValueError:
-            print("Пожалуйста, введите число.")
+            print("Please enter a number.")
 
 def main():
-    name_file = input("Введите названия фильма/серила: >>>>> ")
+    name_file = input("Enter the names of the movie/series: >>>>> ")
     URL = "http://rutor.info"
     options = []
     new = []
@@ -66,14 +66,14 @@ def main():
     time.sleep(0.5)
     search_button = driver.find_element(By.XPATH, """/html/body/div[2]/div[2]/div[2]/center/table/tbody/tr[2]/td/input""")
     search_button.click()
-    print("Начинаю поиск...")
+    print("Starting the search...")
     time.sleep(3)
     all_link = driver.find_elements(By.XPATH, """/html/body/div[2]/div[1]/div[2]""")
     all_link_i = driver.find_element(By.ID, "index")
     all_link_s = all_link_i.size
     h = all_link_s['height']
     if h <= 73:
-         print(f"К сожалению фильма/сериала по названию:", name_file, "найти не удолось")
+         print(f"Unfortunately, the movie/series by name:", name_file, "could not be found")
          driver.quit()
     for i in range(len(all_link)):
          new.append(all_link[i].text.split("\n"))
@@ -83,27 +83,27 @@ def main():
     select_index = select_option(options)
     good_link = driver.find_element(By.XPATH, f"""/html/body/div[2]/div[1]/div[2]/table/tbody/tr[{select_index + 2}]/td[2]/a[3]""")
     good_link.click()
-    print("Захожу...")
+    print("I'm coming in...")
     download_button = driver.find_element(By.XPATH, """/html/body/div[2]/div[1]/div[2]/a[2]""")
     download_button.click()
-    print("Торрент скачивается...")
+    print("Torrent is being downloaded...")
     time.sleep(1.5)
-    print(f"Файл скачен, находится по адресу:", *prefs.values())
+    print(f"The file has been downloaded and is located at:", *prefs.values())
     driver.quit()
     os.system('cls' if os.name == 'nt' else 'clear')
     time.sleep(1)
    
 def repeat_or_exit():
     while True:
-        cmd = input("Повторный ввод =>> y, выход из программы =>> q \n").strip().lower()
+        cmd = input("Re-entry =>> y, exit the program =>> q \n").strip().lower()
         if cmd == "y":
             main()
         elif cmd == "q":
-            print("Выхожу...")
+            print("I'm coming out...")
             time.sleep(1)
             raise SystemExit(1)
         else:
-            print("Неверный ввод, попробуйте снова.")
+            print("Incorrect input, try again.")
 
 
 if __name__ == '__main__':
